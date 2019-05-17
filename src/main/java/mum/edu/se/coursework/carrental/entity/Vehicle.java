@@ -1,5 +1,6 @@
 package mum.edu.se.coursework.carrental.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ public class Vehicle {
     private Long vehicleId;
 
     @Column(name = "USER_ID")
+    @JsonFormat
     private Long userId;
 
 }
