@@ -1,9 +1,11 @@
 package mum.edu.se.coursework.carrental.controller;
 
 import lombok.extern.java.Log;
+import mum.edu.se.coursework.carrental.entity.Payment;
 import mum.edu.se.coursework.carrental.entity.Role;
 import mum.edu.se.coursework.carrental.entity.User;
 import mum.edu.se.coursework.carrental.entity.UserRole;
+import mum.edu.se.coursework.carrental.service.PaymentService;
 import mum.edu.se.coursework.carrental.service.StreamService;
 import mum.edu.se.coursework.carrental.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class MainController {
 
     @Autowired
     private StreamService streamService;
+
+    @Autowired
+    private PaymentService paymentService;
 
     @GetMapping("/home")
     public String main(Model model) {
@@ -62,14 +67,22 @@ public class MainController {
     public String dashboard(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         List<User> all = userService.findAll();
-
         log.info("all size = = = "+all.size());
-
         Map<String, Long> surveyMap = streamService.getStateStat.apply(all);
-
+        List<Payment> paymentList = paymentService.findAll();
+        Map<Integer, Long> paymentMap = streamService.getMonthStat.apply(paymentList);
         model.addAttribute("surveyMap", surveyMap);
-
+        model.addAttribute("surveyMapMonth", paymentMap);
         return "dashboard"; //view
+    }
+
+
+    @GetMapping("/month")
+    public String month(Model model) {
+        List<Payment> paymentList = paymentService.findAll();
+        Map<Integer, Long> paymentMap = streamService.getMonthStat.apply(paymentList);
+        model.addAttribute("surveyMap", paymentMap);
+        return "month"; //view
     }
 
 }
