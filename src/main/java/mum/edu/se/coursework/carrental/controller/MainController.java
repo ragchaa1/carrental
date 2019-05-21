@@ -1,7 +1,10 @@
 package mum.edu.se.coursework.carrental.controller;
 
 import lombok.extern.java.Log;
+import mum.edu.se.coursework.carrental.entity.Role;
 import mum.edu.se.coursework.carrental.entity.User;
+import mum.edu.se.coursework.carrental.entity.UserRole;
+import mum.edu.se.coursework.carrental.service.StreamService;
 import mum.edu.se.coursework.carrental.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Log
 @Controller
@@ -19,12 +24,16 @@ public class MainController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private StreamService streamService;
+
     @GetMapping("/home")
     public String main(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-
+        UserRole userRole = userService.findbyUserId(user.getUserId());
         model.addAttribute("user", user);
+        model.addAttribute("userRole", userRole);
 
         return "home"; //view
     }
@@ -37,6 +46,30 @@ public class MainController {
         model.addAttribute("user", user);
 
         return "car"; //view
+    }
+
+    @GetMapping("/payment")
+    public String payment(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+
+        model.addAttribute("user", user);
+
+        return "payment"; //view
+    }
+
+    @GetMapping("/dashboard")
+    public String dashboard(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        List<User> all = userService.findAll();
+
+        log.info("all size = = = "+all.size());
+
+        Map<String, Long> surveyMap = streamService.getStateStat.apply(all);
+
+        model.addAttribute("surveyMap", surveyMap);
+
+        return "dashboard"; //view
     }
 
 }

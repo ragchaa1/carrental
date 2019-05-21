@@ -157,7 +157,7 @@
 
                 <!--== Single HeaderTop Start ==-->
                 <div class="col-lg-3 text-center">
-                    <i class="fa fa-clock-o"></i> Mon-Fri 09.00 - 17.00
+                    <i class="fa fa-clock-o"></i> <span th:text="${user.getFullName()}"></span><span th:text="${userRole.getRoleId()}"></span>
                 </div>
                 <!--== Single HeaderTop End ==-->
 
@@ -195,6 +195,8 @@
                             <li class="active"><a href="/home">Home</a></li>
                             <li><a href="about.html">About</a></li>
                             <li><a href="services.html">Services</a></li>
+                            <li><a href="/payment">Payment</a></li>
+
                             <li><a href="/car">Cars</a>
                                <!-- <ul>
                                     <li><a href="car-left-sidebar.html">Car Left Sidebar</a></li>
@@ -203,8 +205,8 @@
                                     <li><a href="car-details.html">Car Details</a></li>
                                 </ul>-->
                             </li>
-                            <li><a href="index.html">Pages</a>
-                              <!--  <ul>
+                        <!--    <li><a href="index.html">Pages</a>
+                              &lt;!&ndash;  <ul>
                                     <li><a href="package.html">Pricing</a></li>
                                     <li><a href="driver.html">Driver</a></li>
                                     <li><a href="faq.html">FAQ</a></li>
@@ -213,15 +215,21 @@
                                     <li><a href="login.html">Log In</a></li>
                                     <li><a href="register.html">Register</a></li>
                                     <li><a href="404.html">404</a></li>
-                                </ul>-->
-                            </li>
-                            <li><a href="#">Blog</a>
-                                <!--<ul>
+                                </ul>&ndash;&gt;
+                            </li>-->
+                            <!--<li><a href="#">Blog</a>
+                                &lt;!&ndash;<ul>
                                     <li><a href="article.html">Blog Page</a></li>
                                     <li><a href="article-details.html">Blog Details</a></li>
-                                </ul>-->
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                                </ul>&ndash;&gt;
+                            </li>-->
+
+                            <li><a href="contact.html">Contact</a></li><!--
+                            th:if="${teacher.gender == 'F'}"-->
+                            <li th:if="${userRole.getRoleId()==1}"><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="/logout">Logout</a></li>
+
+
                         </ul>
                     </nav>
                 </div>
@@ -245,7 +253,7 @@
                             <p>FOR AS LOW AS $10 A DAY PLUS 15% DISCOUNT <br> FOR OUR RETURNING CUSTOMERS</p>
 
                             <div class="book-ur-car">
-                                <form action="index2.html">
+                                <form action="/payment">
                                     <div class="pick-location bookinput-item">
                                         <select class="custom-select">
                                             <option selected>Pick Location</option>

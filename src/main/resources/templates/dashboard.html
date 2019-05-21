@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+
+    <link href="../static/assets/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!--<link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+-->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/us/custom/us-all-mainland.js"></script>
+</head>
+
+
+<body>
+
+<div class="row">
+
+    <div class="col-sm-4">
+
+    </div>
+
+    <div class="col-sm-4">
+
+    </div>
+
+    <div class="col-sm-4">
+
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="container">
+            <h2 align="center">Tweet stat by state</h2>
+
+            <div id="container"
+                 style="width: 550px; height: 400px; margin: 0 auto"></div>
+        </div>
+        <style>
+            #container {
+                height: 500px;
+                min-width: 310px;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .loading {
+                margin-top: 10em;
+                text-align: center;
+                color: gray;
+            }
+        </style>
+        <script
+                src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+        <header>
+
+        </header>
+
+        <script th:inline="javascript">
+            $(function () {
+                console.log("key = = " + [[${surveyMap.keySet()}]]);
+                console.log("values = = " + [[${surveyMap.values()}]]);
+                console.log(".get(\"us-wa\") values = = " + [[${surveyMap.get(\"us-wa\")}]]);
+                // var data=[[${surveyMap}]]
+
+                var data = [
+                    ['us-ma', [[${surveyMap.get(\"us-ma\")}]]],
+                    ['us-wa', [[${surveyMap.get(\"us-wa\")}]]],
+                    ['us-ca', [[${surveyMap.get(\"us-ca\")}]]],
+                    ['us-or', [[${surveyMap.get(\"us-or\")}]]],
+                    ['us-wi', [[${surveyMap.get(\"us-wi\")}]]],
+                    ['us-me', [[${surveyMap.get(\"us-me\")}]]],
+                    ['us-mi', [[${surveyMap.get(\"us-mi\")}]]],
+                    ['us-nv', [[${surveyMap.get(\"us-nv\")}]]],
+                    ['us-nm', [[${surveyMap.get(\"us-nm\")}]]],
+                    ['us-co', [[${surveyMap.get(\"us-co\")}]]],
+                    ['us-wy', [[${surveyMap.get(\"us-wy\")}]]],
+                    ['us-ks', [[${surveyMap.get(\"us-ks\")}]]],
+                    ['us-ne', [[${surveyMap.get(\"us-ne\")}]]],
+                    ['us-ok', [[${surveyMap.get(\"us-ok\")}]]],
+                    ['us-mo', [[${surveyMap.get(\"us-mo\")}]]],
+                    ['us-il', [[${surveyMap.get(\"us-il\")}]]],
+                    ['us-in', [[${surveyMap.get(\"us-in\")}]]],
+                    ['us-vt', [[${surveyMap.get(\"us-vt\")}]]],
+                    ['us-ar', [[${surveyMap.get(\"us-ar\")}]]],
+                    ['us-tx', [[${surveyMap.get(\"us-tx\")}]]],
+                    ['us-ri', [[${surveyMap.get(\"us-ri\")}]]],
+                    ['us-al', [[${surveyMap.get(\"us-al\")}]]],
+                    ['us-ms', [[${surveyMap.get(\"us-ms\")}]]],
+                    ['us-nc', [[${surveyMap.get(\"us-nc\")}]]],
+                    ['us-va', [[${surveyMap.get(\"us-va\")}]]],
+                    ['us-ia', [[${surveyMap.get(\"us-ia\")}]]],
+                    ['us-md', [[${surveyMap.get(\"us-md\")}]]],
+                    ['us-de', [[${surveyMap.get(\"us-de\")}]]],
+                    ['us-pa', [[${surveyMap.get(\"us-pa\")}]]],
+                    ['us-nj', [[${surveyMap.get(\"us-nj\")}]]],
+                    ['us-ny', [[${surveyMap.get(\"us-ny\")}]]],
+                    ['us-id', [[${surveyMap.get(\"us-id\")}]]],
+                    ['us-sd', [[${surveyMap.get(\"us-sd\")}]]],
+                    ['us-ct', [[${surveyMap.get(\"us-ct\")}]]],
+                    ['us-nh', [[${surveyMap.get(\"us-nh\")}]]],
+                    ['us-ky', [[${surveyMap.get(\"us-ky\")}]]],
+                    ['us-oh', [[${surveyMap.get(\"us-oh\")}]]],
+                    ['us-tn', [[${surveyMap.get(\"us-tn\")}]]],
+                    ['us-wv', [[${surveyMap.get(\"us-wv\")}]]],
+                    ['us-dc', [[${surveyMap.get(\"us-dc\")}]]],
+                    ['us-la', [[${surveyMap.get(\"us-la\")}]]],
+                    ['us-fl', [[${surveyMap.get(\"us-fl\")}]]],
+                    ['us-ga', [[${surveyMap.get(\"us-ga\")}]]],
+                    ['us-sc', [[${surveyMap.get(\"us-sc\")}]]],
+                    ['us-mn', [[${surveyMap.get(\"us-mn\")}]]],
+                    ['us-mt', [[${surveyMap.get(\"us-mt\")}]]],
+                    ['us-nd', [[${surveyMap.get(\"us-nd\")}]]],
+                    ['us-az', [[${surveyMap.get(\"us-az\")}]]],
+                    ['us-ut', [[${surveyMap.get(\"us-ut\")}]]],
+                ];
+
+// Create the chart
+                Highcharts.mapChart('container', {
+                    chart: {
+                        map: 'countries/us/custom/us-all-mainland'
+                    },
+
+                    title: {
+                        text: 'United States Of America'
+                    },
+
+                    subtitle: {
+                        text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/us/custom/us-all-mainland.js">United States of America, mainland</a>'
+                    },
+
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
+                        }
+                    },
+
+                    colorAxis: {
+                        min: 0
+                    },
+
+                    series: [{
+                        data: data,
+                        name: 'User number',
+                        states: {
+                            hover: {
+                                color: '#BADA55'
+                            }
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }]
+                });
+            });
+        </script>
+    </div>
+    <div class="col-sm-4"><h1>.col-sm-4</h1></div>
+    <div class="col-sm-4"><h1>.col-sm-4</h1></div>
+</div>
+
+
+</body>
+</html>

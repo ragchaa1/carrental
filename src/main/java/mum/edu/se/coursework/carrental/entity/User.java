@@ -40,6 +40,11 @@ public class User {
 
     @Column(name = "PROFILE_PIC_URL")
     private String profilePicUrl;
+
+    @Column(name = "STATE_CODE")
+    private String stateCode;
+
+
     //active
     @Column(name = "ACTIVE")
     private Integer active;

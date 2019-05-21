@@ -23,8 +23,14 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
+
+
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public UserRole findbyUserId(Long userId){
+        return userRoleRepository.findByUserId(userId);
     }
 
     public List<User> findAll() {
@@ -43,7 +49,7 @@ public class UserService {
         User save = userRepository.save(user);
         UserRole userRole = new UserRole();
         userRole.setRoleId(1L);
-        userRole.setUserid(save.getUserId());
+        userRole.setUserId(save.getUserId());
         userRoleRepository.save(userRole);
     }
 }
