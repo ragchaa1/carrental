@@ -29,4 +29,14 @@ public class MainController {
         return "home"; //view
     }
 
+    @GetMapping("/car")
+    public String car(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+
+        model.addAttribute("user", user);
+
+        return "car"; //view
+    }
+
 }
