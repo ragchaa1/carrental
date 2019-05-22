@@ -22,9 +22,15 @@ public class StreamService {
             (list) ->
                     list.stream().collect(Collectors.groupingBy(e -> e.getStateCode(), Collectors.counting()));
 
-    public Function<List<Payment>, Map<Integer, Long>> getMonthStat =
+    public Function<List<Payment>, Map<Integer, Double>> getMonthStat =
             (list) ->
-                    list.stream().map(e -> e.getDate()).collect(Collectors.groupingBy(e -> e.getMonthValue(), Collectors.counting()));
+                    list.stream().collect(Collectors.groupingBy(e -> e.getDate().getMonthValue(), Collectors.summingDouble(t->t.getAmount())));
+
+    //  Map<Integer, Double> collect = paymentList.stream().collect(Collectors.groupingBy(e -> e.getDate().getYear(), Collectors.summingDouble(t -> t.getAmount())));
+
+    public Function<List<Payment>, Map<Integer, Double>> getYearStat =
+            (list) ->
+                    list.stream().collect(Collectors.groupingBy(e -> e.getDate().getYear(),Collectors.summingDouble(t -> t.getAmount())));
 
 
 }

@@ -18,4 +18,7 @@ public class Payment {
     @Column(name = "DATE")
     private LocalDate date;
 
+    @Column(name = "AMOUNT")
+    private Double amount;
+
 }

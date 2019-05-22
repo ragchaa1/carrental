@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Log
 @Controller
@@ -70,9 +71,7 @@ public class MainController {
         log.info("all size = = = "+all.size());
         Map<String, Long> surveyMap = streamService.getStateStat.apply(all);
         List<Payment> paymentList = paymentService.findAll();
-        Map<Integer, Long> paymentMap = streamService.getMonthStat.apply(paymentList);
         model.addAttribute("surveyMap", surveyMap);
-        model.addAttribute("surveyMapMonth", paymentMap);
         return "dashboard"; //view
     }
 
@@ -80,9 +79,21 @@ public class MainController {
     @GetMapping("/month")
     public String month(Model model) {
         List<Payment> paymentList = paymentService.findAll();
-        Map<Integer, Long> paymentMap = streamService.getMonthStat.apply(paymentList);
+        Map<Integer, Double> paymentMap = streamService.getMonthStat.apply(paymentList);
         model.addAttribute("surveyMap", paymentMap);
         return "month"; //view
+    }
+
+    @GetMapping("/year")
+    public String year(Model model) {
+        List<Payment> paymentList = paymentService.findAll();
+
+        Map<Integer, Double> collect = paymentList.stream().collect(Collectors.groupingBy(e -> e.getDate().getYear(), Collectors.summingDouble(t -> t.getAmount())));
+        Map<Integer, Double> paymentMap = streamService.getYearStat.apply(paymentList);
+
+
+        model.addAttribute("surveyMap", paymentMap);
+        return "year"; //view
     }
 
 }
