@@ -96,4 +96,15 @@ public class MainController {
         return "year"; //view
     }
 
+    @GetMapping("/about")
+    public String about(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        UserRole userRole = userService.findbyUserId(user.getUserId());
+        model.addAttribute("user", user);
+        model.addAttribute("userRole", userRole);
+
+        return "about"; //view
+    }
+
 }

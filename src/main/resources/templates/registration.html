@@ -167,6 +167,16 @@
                                     th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
                                     class="validation-message"></label>
                             </div>
+
+                            <div class="username">
+                                <select class="custom-select" th:field="*{stateCode}">
+                                    <option value="us-ca">California</option>
+                                    <option value="us-ia">Iowa</option>
+                                    <option value="us-co">Colorado</option>
+                                    <option value="us-tx">Texas</option>
+                                </select>
+                            </div>
+
                             <div class="log-btn">
                                 <button type="submit"><i class="fa fa-check-square"></i> Sign Up</button>
                             </div>
