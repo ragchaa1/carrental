@@ -16,6 +16,45 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--=== Favicon ===-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <title>Cardoor - Car Rental HTML Template</title>
+
+    <!--=== Bootstrap CSS ===-->
+    <link href="../static/assets/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!--=== Vegas Min CSS ===-->
+    <link href="../static/assets/css/plugins/vegas.min.css" th:href="@{/css/plugins/vegas.min.css}" rel="stylesheet">
+    <!--=== Slicknav CSS ===-->
+    <link href="../static/assets/css/plugins/slicknav.min.css" th:href="@{/css/plugins/slicknav.min.css}"
+          rel="stylesheet">
+    <!--=== Magnific Popup CSS ===-->
+    <link href="../static/assets/css/plugins/magnific-popup.css" th:href="@{/css/plugins/magnific-popup.css}"
+          rel="stylesheet">
+    <!--=== Owl Carousel CSS ===-->
+    <link href="../static/assets/css/plugins/owl.carousel.min.css" th:href="@{/css/plugins/owl.carousel.min.css}"
+          rel="stylesheet">
+    <!--=== Gijgo CSS ===-->
+    <link href="../static/assets/css/plugins/gijgo.css" th:href="@{/css/plugins/gijgo.css}" rel="stylesheet">
+    <!--=== FontAwesome CSS ===-->
+    <link href="../static/assets/css/font-awesome.css" th:href="@{/css/font-awesome.css}" rel="stylesheet">
+    <!--=== Theme Reset CSS ===-->
+    <link href="../static/assets/css/reset.css" th:href="@{/css/reset.css}" rel="stylesheet">
+    <!--=== Main Style CSS ===-->
+    <link href="../static/assets/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+    <!--=== Responsive CSS ===-->
+    <link href="../static/assets/css/responsive.css" th:href="@{/css/responsive.css}" rel="stylesheet">
+
+
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <style>
     #container {
@@ -31,8 +70,50 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-<div id="container" style="height: 400px"></div>
 
+
+<header>
+
+    <div id="header-bottom">
+        <div class="container">
+            <div class="row">
+                <!--== Logo Start ==-->
+                <div class="col-lg-4">
+                    <a href="index2.html" class="logo">
+                        <img src="../static/assets/img/logo.png" th:src="@{/img/logo.png}" alt="JSOFT">
+                    </a>
+                </div>
+                <!--== Logo End ==-->
+
+                <!--== Main Menu Start ==-->
+                <div class="col-lg-8 d-none d-xl-block">
+                    <nav class="mainmenu alignright">
+                        <ul>
+                            <li class="active"><a href="/home">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="/payment">Payment</a></li>
+                            <li><a href="/car">Cars</a>
+                            </li>
+                            <li th:if="${userRole.getRoleId()==1}"><a href="/dashboard">Dashboard</a>
+                                <ul>
+                                    <li><a href="/dashboard">Usa dashboard</a></li>
+                                    <li><a href="/month">Month dashboard</a></li>
+                                    <li><a href="/year">Year dashboard</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!--== Main Menu End ==-->
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<div id="container" style="height: 400px"></div>
 <script th:inline="javascript">
     Highcharts.chart('container', {
         chart: {
@@ -75,117 +156,5 @@
         }]
     });
 </script>
-
-<header>
-
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
-        <a class="navbar-brand" href="/home"><strong class="fab fa-twitter">Car Rental Dashboard</strong></a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/displayBarGraph">Income-Per-User<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/displayPieChart">Gender-Stat<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/displayUsaChart">User-By-State<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/displayTrendWord">Trend-Word-Chart <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/displayMonth">Income-Per-Month<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/displayYear">Income-Per-Year<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/displayFollower">Most-Followers-ranking <span class="sr-only">(current)</span></a>
-                </li>
-
-            </ul>
-
-            <ul class="navbar-nav nav-flex-icons">
-
-                <!--<li class="nav-item">
-                    <a class="nav-link"><i class="fab fa-twitter"></i></a>
-                </li>-->
-
-            </ul>
-        </div>
-    </nav>
-</header>
-<div id="header-bottom">
-    <div class="container">
-        <div class="row">
-            <!--== Logo Start ==-->
-            <div class="col-lg-4">
-                <a href="index2.html" class="logo">
-                    <img src="../static/assets/img/logo.png" th:src="@{/img/logo.png}" alt="JSOFT">
-                </a>
-            </div>
-            <!--== Logo End ==-->
-
-            <!--== Main Menu Start ==-->
-            <div class="col-lg-8 d-none d-xl-block">
-                <nav class="mainmenu alignright">
-                    <ul>
-                        <li class="active"><a href="/home">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <!--  <li><a href="services.html">Services</a></li>
-                        -->
-                        <li><a href="/payment">Payment</a></li>
-
-                        <li><a href="/car">Cars</a>
-                            <!-- <ul>
-                                 <li><a href="car-left-sidebar.html">Car Left Sidebar</a></li>
-                                 <li><a href="car-right-sidebar.html">Car Right Sidebar</a></li>
-                                 <li><a href="car.html">Car Without Sidebar</a></li>
-                                 <li><a href="car-details.html">Car Details</a></li>
-                             </ul>-->
-                        </li>
-                        <!--    <li><a href="index.html">Pages</a>
-                              &lt;!&ndash;  <ul>
-                                    <li><a href="package.html">Pricing</a></li>
-                                    <li><a href="driver.html">Driver</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="help-desk.html">Help Desk</a></li>
-                                    <li><a href="login.html">Log In</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                </ul>&ndash;&gt;
-                            </li>-->
-                        <!--<li><a href="#">Blog</a>
-                            &lt;!&ndash;<ul>
-                                <li><a href="article.html">Blog Page</a></li>
-                                <li><a href="article-details.html">Blog Details</a></li>
-                            </ul>&ndash;&gt;
-                        </li>-->
-
-                        <!--<li><a href="contact.html">Contact</a></li>&lt;!&ndash;
-                       th:if="${teacher.gender == 'F'}"-->
-                        <li th:if="${userRole.getRoleId()==1}"><a href="/dashboard">Dashboard</a>
-                            <ul>
-                                <li><a href="/dashboard">Usa dashboard</a></li>
-                                <li><a href="/month">Month dashboard</a></li>
-                                <li><a href="/year">Year dashboard</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a href="/logout">Logout</a></li>
-
-
-                    </ul>
-                </nav>
-            </div>
-            <!--== Main Menu End ==-->
-        </div>
-    </div>
-</div>
-
-
 </body>
 </html>

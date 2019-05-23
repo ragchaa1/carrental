@@ -23,11 +23,70 @@
     <script src="https://code.highcharts.com/highcharts-3d.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <style>
+        #container {
+            height: 500px;
+            min-width: 310px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .loading {
+            margin-top: 10em;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--=== Favicon ===-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <title>Cardoor - Car Rental HTML Template</title>
+
+    <!--=== Bootstrap CSS ===-->
+    <link href="../static/assets/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!--=== Vegas Min CSS ===-->
+    <link href="../static/assets/css/plugins/vegas.min.css" th:href="@{/css/plugins/vegas.min.css}" rel="stylesheet">
+    <!--=== Slicknav CSS ===-->
+    <link href="../static/assets/css/plugins/slicknav.min.css" th:href="@{/css/plugins/slicknav.min.css}"
+          rel="stylesheet">
+    <!--=== Magnific Popup CSS ===-->
+    <link href="../static/assets/css/plugins/magnific-popup.css" th:href="@{/css/plugins/magnific-popup.css}"
+          rel="stylesheet">
+    <!--=== Owl Carousel CSS ===-->
+    <link href="../static/assets/css/plugins/owl.carousel.min.css" th:href="@{/css/plugins/owl.carousel.min.css}"
+          rel="stylesheet">
+    <!--=== Gijgo CSS ===-->
+    <link href="../static/assets/css/plugins/gijgo.css" th:href="@{/css/plugins/gijgo.css}" rel="stylesheet">
+    <!--=== FontAwesome CSS ===-->
+    <link href="../static/assets/css/font-awesome.css" th:href="@{/css/font-awesome.css}" rel="stylesheet">
+    <!--=== Theme Reset CSS ===-->
+    <link href="../static/assets/css/reset.css" th:href="@{/css/reset.css}" rel="stylesheet">
+    <!--=== Main Style CSS ===-->
+    <link href="../static/assets/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+    <!--=== Responsive CSS ===-->
+    <link href="../static/assets/css/responsive.css" th:href="@{/css/responsive.css}" rel="stylesheet">
 
 
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
 
+<header>
 <div id="header-bottom">
     <div class="container">
         <div class="row">
@@ -45,39 +104,11 @@
                     <ul>
                         <li class="active"><a href="/home">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <!--  <li><a href="services.html">Services</a></li>
-                        -->
                         <li><a href="/payment">Payment</a></li>
 
                         <li><a href="/car">Cars</a>
-                            <!-- <ul>
-                                 <li><a href="car-left-sidebar.html">Car Left Sidebar</a></li>
-                                 <li><a href="car-right-sidebar.html">Car Right Sidebar</a></li>
-                                 <li><a href="car.html">Car Without Sidebar</a></li>
-                                 <li><a href="car-details.html">Car Details</a></li>
-                             </ul>-->
                         </li>
-                        <!--    <li><a href="index.html">Pages</a>
-                              &lt;!&ndash;  <ul>
-                                    <li><a href="package.html">Pricing</a></li>
-                                    <li><a href="driver.html">Driver</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="help-desk.html">Help Desk</a></li>
-                                    <li><a href="login.html">Log In</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                </ul>&ndash;&gt;
-                            </li>-->
-                        <!--<li><a href="#">Blog</a>
-                            &lt;!&ndash;<ul>
-                                <li><a href="article.html">Blog Page</a></li>
-                                <li><a href="article-details.html">Blog Details</a></li>
-                            </ul>&ndash;&gt;
-                        </li>-->
 
-                        <!--<li><a href="contact.html">Contact</a></li>&lt;!&ndash;
-                       th:if="${teacher.gender == 'F'}"-->
                         <li th:if="${userRole.getRoleId()==1}"><a href="/dashboard">Dashboard</a>
                             <ul>
                                 <li><a href="/dashboard">Usa dashboard</a></li>
@@ -97,142 +128,115 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <div class="container">
-            <h2 align="center">User stat by state</h2>
 
-            <div id="container"
-                 style="width: 550px; height: 400px; margin: 0 auto"></div>
-        </div>
-        <style>
-            #container {
-                height: 500px;
-                min-width: 310px;
-                max-width: 800px;
-                margin: 0 auto;
-            }
+<div class="container">
+    <h2 align="center">User stat by state</h2>
 
-            .loading {
-                margin-top: 10em;
-                text-align: center;
-                color: gray;
-            }
-        </style>
-        <script
-                src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script
-                src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <div id="container"
+         style="width: 550px; height: 400px; margin: 0 auto"></div>
+</div>
+</header>
 
-        <header>
+<script th:inline="javascript">
+    $(function () {
+        console.log("key = = " + [[${surveyMap.keySet()}]]);
+        console.log("values = = " + [[${surveyMap.values()}]]);
+        console.log(".get(\"us-wa\") values = = " + [[${surveyMap.get(\"us-wa\")}]]);
+        // var data=[[${surveyMap}]]
 
-        </header>
-
-        <script th:inline="javascript">
-            $(function () {
-                console.log("key = = " + [[${surveyMap.keySet()}]]);
-                console.log("values = = " + [[${surveyMap.values()}]]);
-                console.log(".get(\"us-wa\") values = = " + [[${surveyMap.get(\"us-wa\")}]]);
-                // var data=[[${surveyMap}]]
-
-                var data = [
-                    ['us-ma', [[${surveyMap.get(\"us-ma\")}]]],
-                    ['us-wa', [[${surveyMap.get(\"us-wa\")}]]],
-                    ['us-ca', [[${surveyMap.get(\"us-ca\")}]]],
-                    ['us-or', [[${surveyMap.get(\"us-or\")}]]],
-                    ['us-wi', [[${surveyMap.get(\"us-wi\")}]]],
-                    ['us-me', [[${surveyMap.get(\"us-me\")}]]],
-                    ['us-mi', [[${surveyMap.get(\"us-mi\")}]]],
-                    ['us-nv', [[${surveyMap.get(\"us-nv\")}]]],
-                    ['us-nm', [[${surveyMap.get(\"us-nm\")}]]],
-                    ['us-co', [[${surveyMap.get(\"us-co\")}]]],
-                    ['us-wy', [[${surveyMap.get(\"us-wy\")}]]],
-                    ['us-ks', [[${surveyMap.get(\"us-ks\")}]]],
-                    ['us-ne', [[${surveyMap.get(\"us-ne\")}]]],
-                    ['us-ok', [[${surveyMap.get(\"us-ok\")}]]],
-                    ['us-mo', [[${surveyMap.get(\"us-mo\")}]]],
-                    ['us-il', [[${surveyMap.get(\"us-il\")}]]],
-                    ['us-in', [[${surveyMap.get(\"us-in\")}]]],
-                    ['us-vt', [[${surveyMap.get(\"us-vt\")}]]],
-                    ['us-ar', [[${surveyMap.get(\"us-ar\")}]]],
-                    ['us-tx', [[${surveyMap.get(\"us-tx\")}]]],
-                    ['us-ri', [[${surveyMap.get(\"us-ri\")}]]],
-                    ['us-al', [[${surveyMap.get(\"us-al\")}]]],
-                    ['us-ms', [[${surveyMap.get(\"us-ms\")}]]],
-                    ['us-nc', [[${surveyMap.get(\"us-nc\")}]]],
-                    ['us-va', [[${surveyMap.get(\"us-va\")}]]],
-                    ['us-ia', [[${surveyMap.get(\"us-ia\")}]]],
-                    ['us-md', [[${surveyMap.get(\"us-md\")}]]],
-                    ['us-de', [[${surveyMap.get(\"us-de\")}]]],
-                    ['us-pa', [[${surveyMap.get(\"us-pa\")}]]],
-                    ['us-nj', [[${surveyMap.get(\"us-nj\")}]]],
-                    ['us-ny', [[${surveyMap.get(\"us-ny\")}]]],
-                    ['us-id', [[${surveyMap.get(\"us-id\")}]]],
-                    ['us-sd', [[${surveyMap.get(\"us-sd\")}]]],
-                    ['us-ct', [[${surveyMap.get(\"us-ct\")}]]],
-                    ['us-nh', [[${surveyMap.get(\"us-nh\")}]]],
-                    ['us-ky', [[${surveyMap.get(\"us-ky\")}]]],
-                    ['us-oh', [[${surveyMap.get(\"us-oh\")}]]],
-                    ['us-tn', [[${surveyMap.get(\"us-tn\")}]]],
-                    ['us-wv', [[${surveyMap.get(\"us-wv\")}]]],
-                    ['us-dc', [[${surveyMap.get(\"us-dc\")}]]],
-                    ['us-la', [[${surveyMap.get(\"us-la\")}]]],
-                    ['us-fl', [[${surveyMap.get(\"us-fl\")}]]],
-                    ['us-ga', [[${surveyMap.get(\"us-ga\")}]]],
-                    ['us-sc', [[${surveyMap.get(\"us-sc\")}]]],
-                    ['us-mn', [[${surveyMap.get(\"us-mn\")}]]],
-                    ['us-mt', [[${surveyMap.get(\"us-mt\")}]]],
-                    ['us-nd', [[${surveyMap.get(\"us-nd\")}]]],
-                    ['us-az', [[${surveyMap.get(\"us-az\")}]]],
-                    ['us-ut', [[${surveyMap.get(\"us-ut\")}]]],
-                ];
+        var data = [
+            ['us-ma', [[${surveyMap.get(\"us-ma\")}]]],
+            ['us-wa', [[${surveyMap.get(\"us-wa\")}]]],
+            ['us-ca', [[${surveyMap.get(\"us-ca\")}]]],
+            ['us-or', [[${surveyMap.get(\"us-or\")}]]],
+            ['us-wi', [[${surveyMap.get(\"us-wi\")}]]],
+            ['us-me', [[${surveyMap.get(\"us-me\")}]]],
+            ['us-mi', [[${surveyMap.get(\"us-mi\")}]]],
+            ['us-nv', [[${surveyMap.get(\"us-nv\")}]]],
+            ['us-nm', [[${surveyMap.get(\"us-nm\")}]]],
+            ['us-co', [[${surveyMap.get(\"us-co\")}]]],
+            ['us-wy', [[${surveyMap.get(\"us-wy\")}]]],
+            ['us-ks', [[${surveyMap.get(\"us-ks\")}]]],
+            ['us-ne', [[${surveyMap.get(\"us-ne\")}]]],
+            ['us-ok', [[${surveyMap.get(\"us-ok\")}]]],
+            ['us-mo', [[${surveyMap.get(\"us-mo\")}]]],
+            ['us-il', [[${surveyMap.get(\"us-il\")}]]],
+            ['us-in', [[${surveyMap.get(\"us-in\")}]]],
+            ['us-vt', [[${surveyMap.get(\"us-vt\")}]]],
+            ['us-ar', [[${surveyMap.get(\"us-ar\")}]]],
+            ['us-tx', [[${surveyMap.get(\"us-tx\")}]]],
+            ['us-ri', [[${surveyMap.get(\"us-ri\")}]]],
+            ['us-al', [[${surveyMap.get(\"us-al\")}]]],
+            ['us-ms', [[${surveyMap.get(\"us-ms\")}]]],
+            ['us-nc', [[${surveyMap.get(\"us-nc\")}]]],
+            ['us-va', [[${surveyMap.get(\"us-va\")}]]],
+            ['us-ia', [[${surveyMap.get(\"us-ia\")}]]],
+            ['us-md', [[${surveyMap.get(\"us-md\")}]]],
+            ['us-de', [[${surveyMap.get(\"us-de\")}]]],
+            ['us-pa', [[${surveyMap.get(\"us-pa\")}]]],
+            ['us-nj', [[${surveyMap.get(\"us-nj\")}]]],
+            ['us-ny', [[${surveyMap.get(\"us-ny\")}]]],
+            ['us-id', [[${surveyMap.get(\"us-id\")}]]],
+            ['us-sd', [[${surveyMap.get(\"us-sd\")}]]],
+            ['us-ct', [[${surveyMap.get(\"us-ct\")}]]],
+            ['us-nh', [[${surveyMap.get(\"us-nh\")}]]],
+            ['us-ky', [[${surveyMap.get(\"us-ky\")}]]],
+            ['us-oh', [[${surveyMap.get(\"us-oh\")}]]],
+            ['us-tn', [[${surveyMap.get(\"us-tn\")}]]],
+            ['us-wv', [[${surveyMap.get(\"us-wv\")}]]],
+            ['us-dc', [[${surveyMap.get(\"us-dc\")}]]],
+            ['us-la', [[${surveyMap.get(\"us-la\")}]]],
+            ['us-fl', [[${surveyMap.get(\"us-fl\")}]]],
+            ['us-ga', [[${surveyMap.get(\"us-ga\")}]]],
+            ['us-sc', [[${surveyMap.get(\"us-sc\")}]]],
+            ['us-mn', [[${surveyMap.get(\"us-mn\")}]]],
+            ['us-mt', [[${surveyMap.get(\"us-mt\")}]]],
+            ['us-nd', [[${surveyMap.get(\"us-nd\")}]]],
+            ['us-az', [[${surveyMap.get(\"us-az\")}]]],
+            ['us-ut', [[${surveyMap.get(\"us-ut\")}]]],
+        ];
 
 // Create the chart
-                Highcharts.mapChart('container', {
-                    chart: {
-                        map: 'countries/us/custom/us-all-mainland'
-                    },
+        Highcharts.mapChart('container', {
+            chart: {
+                map: 'countries/us/custom/us-all-mainland'
+            },
 
-                    title: {
-                        text: 'United States Of America'
-                    },
+            title: {
+                text: 'United States Of America'
+            },
 
-                    subtitle: {
-                        text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/us/custom/us-all-mainland.js">United States of America, mainland</a>'
-                    },
+            subtitle: {
+                text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/us/custom/us-all-mainland.js">United States of America, mainland</a>'
+            },
 
-                    mapNavigation: {
-                        enabled: true,
-                        buttonOptions: {
-                            verticalAlign: 'bottom'
-                        }
-                    },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
 
-                    colorAxis: {
-                        min: 0
-                    },
+            colorAxis: {
+                min: 0
+            },
 
-                    series: [{
-                        data: data,
-                        name: 'User number',
-                        states: {
-                            hover: {
-                                color: '#BADA55'
-                            }
-                        },
-                        dataLabels: {
-                            enabled: true,
-                            format: '{point.name}'
-                        }
-                    }]
-                });
-            });
-        </script>
-    </div>
-</div>
+            series: [{
+                data: data,
+                name: 'User number',
+                states: {
+                    hover: {
+                        color: '#BADA55'
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }]
+        });
+    });
+</script>
 
 
 </body>
