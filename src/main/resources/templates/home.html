@@ -160,9 +160,9 @@
 
                 <!--== Single HeaderTop Start ==-->
                 <div class="col-lg-3 text-center">
-                    <i class="fa fa-clock-o"></i> <span th:text="${user.getFullName()}"></span><span
-                        th:text="${userRole.getRoleId()}"></span>
-                </div>
+                    <i class="fa fa-clock-o"></i> <span th:text="${user.getFullName()}"></span>
+              <!--      <span th:text="${userRole.getRoleId()}"></span>
+              -->  </div>
                 <!--== Single HeaderTop End ==-->
 
                 <!--== Social Icons Start ==-->
@@ -226,6 +226,18 @@
 </header>
 <!--== Header Area End ==-->
 
+
+<section id="mobile-app-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mobile-app-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!--== SlideshowBg Area Start ==-->
 <section id="slideslow-bg">
     <div class="container">
@@ -235,7 +247,7 @@
                     <div class="display-table">
                         <div class="display-table-cell">
                             <h1>BOOK A CAR TODAY!</h1>
-                            <p>FOR AS LOW AS $10 A DAY PLUS 15% DISCOUNT <br> FOR OUR RETURNING CUSTOMERS</p>
+                            <p>Software Engineering Project Team #4 <br> PROFESSOR O.KALU</p>
 
                             <div class="book-ur-car">
                                 <form action="#" th:object="${booking}" th:action="@{/booking}" method="post"
@@ -744,10 +756,10 @@
 <!--== Choose Car Area End ==-->
 
 <!--== Pricing Area Start ==-->
-<section id="pricing-area" class="section-padding overlay">
+<!--<section id="pricing-area" class="section-padding overlay">
     <div class="container">
         <div class="row">
-            <!-- Section Title Start -->
+            &lt;!&ndash; Section Title Start &ndash;&gt;
             <div class="col-lg-12">
                 <div class="section-title  text-center">
                     <h2>Only quality for clients</h2>
@@ -755,12 +767,12 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
             </div>
-            <!-- Section Title End -->
+            &lt;!&ndash; Section Title End &ndash;&gt;
         </div>
 
-        <!-- Pricing Table Conatent Start -->
+        &lt;!&ndash; Pricing Table Conatent Start &ndash;&gt;
         <div class="row">
-            <!-- Single Pricing Table -->
+            &lt;!&ndash; Single Pricing Table &ndash;&gt;
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="single-pricing-table">
                     <h3>BUSINESS</h3>
@@ -777,9 +789,9 @@
                     </ul>
                 </div>
             </div>
-            <!-- Single Pricing Table -->
+            &lt;!&ndash; Single Pricing Table &ndash;&gt;
 
-            <!-- Single Pricing Table -->
+            &lt;!&ndash; Single Pricing Table &ndash;&gt;
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="single-pricing-table">
                     <h3>Trial</h3>
@@ -796,9 +808,9 @@
                     </ul>
                 </div>
             </div>
-            <!-- Single Pricing Table -->
+            &lt;!&ndash; Single Pricing Table &ndash;&gt;
 
-            <!-- Single Pricing Table -->
+            &lt;!&ndash; Single Pricing Table &ndash;&gt;
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="single-pricing-table">
                     <h3>standard</h3>
@@ -815,11 +827,11 @@
                     </ul>
                 </div>
             </div>
-            <!-- Single Pricing Table -->
+            &lt;!&ndash; Single Pricing Table &ndash;&gt;
         </div>
-        <!-- Pricing Table Conatent End -->
+        &lt;!&ndash; Pricing Table Conatent End &ndash;&gt;
     </div>
-</section>
+</section>-->
 <!--== Pricing Area End ==-->
 
 <!--== Team Area Start ==-->
@@ -1025,22 +1037,6 @@
 
 <div id="mobileapp-video-bg"></div>
 
-<section id="mobile-app-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="mobile-app-content">
-                    <h2>SAVE 30% WITH THE APP</h2>
-                    <p>Easy &amp; Fast - Book a car in 60 seconds</p>
-                    <div class="app-btns">
-                        <a href="#"><i class="fa fa-android"></i> Android Store</a>
-                        <a href="#"><i class="fa fa-apple"></i> Apple Store</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!--== Mobile App Area End ==-->
 
 <!--== Articles Area Start ==-->
