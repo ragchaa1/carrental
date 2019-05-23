@@ -18,6 +18,7 @@ public class Booking {
     @Column(name = "USER_ID")
     private Long userId;
 
+
     @Column(name = "LOCATION_ID")
     private Long locationId;
 
