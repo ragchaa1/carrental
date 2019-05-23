@@ -2,6 +2,8 @@ package mum.edu.se.coursework.carrental.service;
 
 import lombok.extern.java.Log;
 import mum.edu.se.coursework.carrental.entity.Payment;
+import mum.edu.se.coursework.carrental.entity.User;
+import mum.edu.se.coursework.carrental.entity.UserRole;
 import mum.edu.se.coursework.carrental.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,5 +20,8 @@ public class PaymentService {
         return paymentRepository.findAll();
     }
 
+    public void savePayment(Payment payment) {
+        paymentRepository.save(payment);
+    }
 
 }

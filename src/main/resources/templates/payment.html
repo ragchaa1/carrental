@@ -169,10 +169,52 @@
 <body><!--
 
 <div id='title'>Car rental card payment</div>-->
+<div id="header-bottom">
+    <div class="container">
+        <div class="row">
+            <!--== Logo Start ==-->
+            <div class="col-lg-4">
+                <a href="index2.html" class="logo">
+                    <img src="../static/assets/img/logo.png" th:src="@{/img/logo.png}" alt="JSOFT">
+                </a>
+            </div>
+            <!--== Logo End ==-->
 
+            <!--== Main Menu Start ==-->
+            <div class="col-lg-8 d-none d-xl-block">
+                <nav class="mainmenu alignright">
+                    <ul>
+                        <li class="active"><a href="/home">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="/payment">Payment</a></li>
+
+                        <li><a href="/car">Cars</a>
+
+                        </li>
+                        <li th:if="${userRole.getRoleId()==1}"><a href="/dashboard">Dashboard</a>
+                            <ul>
+                                <li><a href="/dashboard">Usa dashboard</a></li>
+                                <li><a href="/month">Month dashboard</a></li>
+                                <li><a href="/year">Year dashboard</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="/logout">Logout</a></li>
+
+
+                    </ul>
+                </nav>
+            </div>
+            <!--== Main Menu End ==-->
+        </div>
+    </div>
+</div>
 
 <div class="card-bounding">
-    <form>
+    <form autocomplete="off" action="#" th:action="@{/payment}"
+          th:object="${payment}" method="post" class="form-horizontal"
+          role="form">
+
         <aside>Card Number:</aside>
         <div class="card-container">
             <!--- ".card-type" is a sprite used as a background image with associated classes for the major card types, providing x-y coordinates for the sprite --->
@@ -191,7 +233,7 @@
 
             <div class="cvv">
                 <aside>Amount</aside>
-                <input placeholder="Amount"/>
+                <input placeholder="Amount" th:field="*{amount}"/>
             </div>
 
             <div class="cvv">

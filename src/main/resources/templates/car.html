@@ -95,8 +95,8 @@
                 <div class="row">
                     <!--== Logo Start ==-->
                     <div class="col-lg-4">
-                        <a href="index.html" class="logo">
-                            <img src="assets/img/logo.png" th:src="@{/img/logo.png}" alt="JSOFT">
+                        <a href="index2.html" class="logo">
+                            <img src="../static/assets/img/logo.png" th:src="@{/img/logo.png}" alt="JSOFT">
                         </a>
                     </div>
                     <!--== Logo End ==-->
@@ -105,20 +105,52 @@
                     <div class="col-lg-8 d-none d-xl-block">
                         <nav class="mainmenu alignright">
                             <ul>
-                                <li><a href="/">Home</a>
-                                </li>
+                                <li class="active"><a href="/home">Home</a></li>
                                 <li><a href="about.html">About</a></li>
-                                <li><a href="services.html">services</a></li>
-                                <li><a href="#">Cars</a>
+                                <!--  <li><a href="services.html">Services</a></li>
+                                -->
+                                <li><a href="/payment">Payment</a></li>
 
+                                <li><a href="/car">Cars</a>
+                                    <!-- <ul>
+                                         <li><a href="car-left-sidebar.html">Car Left Sidebar</a></li>
+                                         <li><a href="car-right-sidebar.html">Car Right Sidebar</a></li>
+                                         <li><a href="car.html">Car Without Sidebar</a></li>
+                                         <li><a href="car-details.html">Car Details</a></li>
+                                     </ul>-->
                                 </li>
-                                <li><a href="index.html">Pages</a>
+                                <!--    <li><a href="index.html">Pages</a>
+                                      &lt;!&ndash;  <ul>
+                                            <li><a href="package.html">Pricing</a></li>
+                                            <li><a href="driver.html">Driver</a></li>
+                                            <li><a href="faq.html">FAQ</a></li>
+                                            <li><a href="gallery.html">Gallery</a></li>
+                                            <li><a href="help-desk.html">Help Desk</a></li>
+                                            <li><a href="login.html">Log In</a></li>
+                                            <li><a href="register.html">Register</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>&ndash;&gt;
+                                    </li>-->
+                                <!--<li><a href="#">Blog</a>
+                                    &lt;!&ndash;<ul>
+                                        <li><a href="article.html">Blog Page</a></li>
+                                        <li><a href="article-details.html">Blog Details</a></li>
+                                    </ul>&ndash;&gt;
+                                </li>-->
 
-                                </li>
-                                <li><a href="#">Blog</a>
+                                <!--<li><a href="contact.html">Contact</a></li>&lt;!&ndash;
+                               th:if="${teacher.gender == 'F'}"-->
+                                <li th:if="${userRole.getRoleId()==1}"><a href="/dashboard">Dashboard</a>
+                                    <ul>
+                                        <li><a href="/dashboard">Usa dashboard</a></li>
+                                        <li><a href="/month">Month dashboard</a></li>
+                                        <li><a href="/year">Year dashboard</a></li>
 
+                                    </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="/logout">Logout</a></li>
+
+
                             </ul>
                         </nav>
                     </div>

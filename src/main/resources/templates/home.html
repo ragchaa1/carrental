@@ -198,7 +198,8 @@
                         <ul>
                             <li class="active"><a href="/home">Home</a></li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">Services</a></li>
+                            <!--  <li><a href="services.html">Services</a></li>
+                            -->
                             <li><a href="/payment">Payment</a></li>
 
                             <li><a href="/car">Cars</a>
@@ -228,8 +229,8 @@
                                 </ul>&ndash;&gt;
                             </li>-->
 
-                            <li><a href="contact.html">Contact</a></li><!--
-                            th:if="${teacher.gender == 'F'}"-->
+                            <!--<li><a href="contact.html">Contact</a></li>&lt;!&ndash;
+                           th:if="${teacher.gender == 'F'}"-->
                             <li th:if="${userRole.getRoleId()==1}"><a href="/dashboard">Dashboard</a>
                                 <ul>
                                     <li><a href="/dashboard">Usa dashboard</a></li>
@@ -264,28 +265,30 @@
                             <p>FOR AS LOW AS $10 A DAY PLUS 15% DISCOUNT <br> FOR OUR RETURNING CUSTOMERS</p>
 
                             <div class="book-ur-car">
-                                <form action="/payment">
+                                <form action="#" th:object="${booking}" th:action="@{/booking}" method="post"
+                                      class="form-horizontal"
+                                      role="form">
                                     <div class="pick-location bookinput-item">
-                                        <select class="custom-select">
-                                            <option selected>Pick Location</option>
-                                            <option value="1">Dhaka</option>
-                                            <option value="2">Comilla</option>
-                                            <option value="3">Barishal</option>
-                                            <option value="3">Rangpur</option>
+                                        <select class="custom-select" th:field="*{locationId}">
+                                            <option value="1">Fairfield</option>
+                                            <option value="2">Ottumwa</option>
+                                            <option value="3">Des Moines</option>
+                                            <option value="3">Iowa City</option>
                                         </select>
                                     </div>
 
                                     <div class="pick-date bookinput-item">
-                                        <input id="startDate2" placeholder="Pick Date"/>
+                                        <input type="date" id="startDate2" placeholder="Pick Date"
+                                               th:field="*{pickDate}"/>
                                     </div>
 
                                     <div class="retern-date bookinput-item">
-                                        <input id="endDate2" placeholder="Return Date"/>
+                                        <input type="date" id="endDate2" placeholder="Return Date"
+                                               th:field="*{returnDate}"/>
                                     </div>
 
                                     <div class="car-choose bookinput-item">
-                                        <select class="custom-select">
-                                            <option selected>Choose Car</option>
+                                        <select class="custom-select" th:field="*{carId}">
                                             <option value="1">BMW</option>
                                             <option value="2">Audi</option>
                                             <option value="3">Lexus</option>
@@ -906,7 +909,7 @@
                                                 <img src="../static/assets/img/team/team-mem-thumb-4.png"
                                                      th:src="@{/img/team/team-mem-thumb-4.png}" alt="JSOFT">
                                             </div>
-                                            <h5>Any Anderssen</h5>
+                                            <h5>Wilfrid Jules</h5>
                                         </a>
                                     </li>
                                 </ul>
@@ -1016,7 +1019,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="team-member-info text-center">
-                                                <h4>Any Anderssen</h4>
+                                                <h4>Wilfrid Jules</h4>
                                                 <h5>Manager</h5>
                                                 <span class="quote-icon"><i class="fa fa-quote-left"></i></span>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut

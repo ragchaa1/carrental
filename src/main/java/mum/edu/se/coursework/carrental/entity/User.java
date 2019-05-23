@@ -32,11 +32,6 @@ public class User {
     @NotEmpty(message = "*Please provide an email")
     private String email;
 
-    @Column(name = "FB_ID")
-    private Long fbId;
-
-    @Column(name = "TWITTER_ID")
-    private Long twitterId;
 
     @Column(name = "PROFILE_PIC_URL")
     private String profilePicUrl;
