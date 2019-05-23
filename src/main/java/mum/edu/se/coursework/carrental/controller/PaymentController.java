@@ -27,9 +27,9 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @RequestMapping(value="/payment", method = RequestMethod.POST)
-    public ModelAndView createPayment(Payment payment, BindingResult bindingResult){
-        ModelAndView modelAndView = new ModelAndView();
+    @RequestMapping(value = "/payment", method = RequestMethod.POST)
+    public String createPayment(Payment payment, BindingResult bindingResult) {
+        //  ModelAndView modelAndView = new ModelAndView();
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
@@ -37,10 +37,11 @@ public class PaymentController {
         payment.setUserId(user.getUserId());
         payment.setDate(LocalDate.now());
 
-        modelAndView.setViewName("payment");
+        // modelAndView.setViewName("payment");
 
         paymentService.savePayment(payment);
+        return "redirect:/home";
 
-        return modelAndView;
+        //   return modelAndView;
     }
 }
