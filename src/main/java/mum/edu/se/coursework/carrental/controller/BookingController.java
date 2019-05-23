@@ -4,6 +4,7 @@ import lombok.extern.java.Log;
 import mum.edu.se.coursework.carrental.entity.Booking;
 import mum.edu.se.coursework.carrental.entity.Payment;
 import mum.edu.se.coursework.carrental.entity.User;
+import mum.edu.se.coursework.carrental.entity.UserRole;
 import mum.edu.se.coursework.carrental.service.BookingService;
 import mum.edu.se.coursework.carrental.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,8 @@ public class BookingController {
 
         modelAndView.addObject("payment", payment);
         modelAndView.setViewName("payment");
+        UserRole userRole = userService.findbyUserId(user.getUserId());
+        modelAndView.addObject("userRole", userRole);
 
         bookingService.saveBooking(booking);
 
